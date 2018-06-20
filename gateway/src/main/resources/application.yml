@@ -1,2 +1,4 @@
-spring.application.name=test-gateway
-server.port=8081
+spring.application.name: gateway
+server.port: 8081
+spring.cloud.gateway.discovery.locator.enabled: true
+hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 5000
