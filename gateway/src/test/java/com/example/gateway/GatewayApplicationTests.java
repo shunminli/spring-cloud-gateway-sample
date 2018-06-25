@@ -31,7 +31,7 @@ public class GatewayApplicationTests {
 				.filter(ExchangeFilterFunctions.basicAuthentication("lillard", "lillard666"))
 				.build();
 
-		IntStream.range(0, 100).parallel().forEach(it -> {
+		IntStream.range(0, 10).parallel().forEach(it -> {
 			FluxExchangeResult<String> res = authClient.get().uri("/rl/customers").exchange().returnResult(String.class);
 			System.out.println(String.format("status code: %s, body: %s.", res.getStatus(), res.getResponseBody().blockFirst()));
 		});

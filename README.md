@@ -6,6 +6,10 @@
 * run customer-service
 * run gateway
 
+## Stress testing
+* cd test-server
+* mvn gatling:execute
+
 ## Reference
 
 * [Spring Cloud Gateway Introductions](https://www.youtube.com/watch?v=9wocKqF15B8)

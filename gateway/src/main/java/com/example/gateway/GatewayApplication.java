@@ -82,7 +82,7 @@ public class GatewayApplication {
                 .filters(
                     f -> f
                         .stripPrefix(1)
-                        .hystrix(config -> config.setName("cb"))
+                        .hystrix(config -> config.setName("cb").setFallbackUri("forward:/fallback"))
                 )
                 .uri("lb://customer-service/")
         )
@@ -103,7 +103,7 @@ public class GatewayApplication {
 
   @Bean
   RedisRateLimiter redisRateLimiter() {
-    return new RedisRateLimiter(5, 10);
+    return new RedisRateLimiter(1, 2);
   }
 
   public static void main(String[] args) {

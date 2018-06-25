@@ -8,6 +8,7 @@ package com.example.customerservice.controller;
 import com.example.customerservice.data.Customer;
 import com.example.customerservice.storage.CustomerStorage;
 import java.time.Duration;
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,8 +37,13 @@ public class CustomerController {
     return customerStorage.findById(id);
   }
 
-  @GetMapping("/delay")
-  public Flux<Customer> getAllDelay() {
-    return customerStorage.findAll().delayElements(Duration.ofSeconds(10));
+  @GetMapping("/delay1")
+  public Flux<Customer> getAllDelay1() {
+    return customerStorage.findAll().delayElements(Duration.ofMillis(1000));
+  }
+
+  @GetMapping("/delay2")
+  public Flux<Customer> getAllDelay2() {
+    return customerStorage.findAll().delayElements(Duration.ofMillis(RandomUtils.nextInt(600)));
   }
 }
